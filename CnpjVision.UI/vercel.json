@@ -1,13 +1,16 @@
+
 {
   "version": 2,
-  "builds": [],
+  "builds": [
+    {
+      "src": "dist/cnpj-vision.ui/**/*",
+      "use": "@vercel/static-build"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "static": {
-    "directory": "dist/cnpj-vision.ui"
-  }
+  ]
 }
