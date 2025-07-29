@@ -49,7 +49,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("cnpjVisionApp", builder =>
     {
-        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+       builder.WithOrigins("http://localhost:4200")
+      .AllowAnyHeader()
+      .AllowAnyMethod()
+      .AllowCredentials();
     });
 });
 
