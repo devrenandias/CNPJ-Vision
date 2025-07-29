@@ -1,16 +1,12 @@
 
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/cnpj-vision.ui/**/*",
-      "use": "@vercel/static-build"
-    }
+  "public": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "outputDirectory": "dist/cnpj-vision.ui"
 }
