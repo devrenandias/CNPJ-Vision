@@ -6,19 +6,22 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        npgsqlOptions => npgsqlOptions.CommandTimeout(60)) // aumenta o timeout
+        npgsqlOptions => npgsqlOptions.CommandTimeout(60)) 
 );
+
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<EmpresaService>();
-
 builder.Services.AddHttpClient();
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -40,18 +43,20 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// CORS para frontend do Vercel
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowVercel", builder =>
+    options.AddPolicy("AllowVercel", policy =>
     {
-        builder.WithOrigins("https://cnpj-vision.vercel.app")
-               .AllowAnyHeader()
-               .AllowAnyMethod();
+        policy.WithOrigins("https://cnpj-vision.vercel.app")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); 
     });
 });
 
 var app = builder.Build();
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -59,15 +64,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting(); 
 
-app.UseCors("AllowVercel");
+app.UseCors("AllowVercel"); 
 
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 
 app.MapGet("/health", () => Results.Ok("OK"));
 
