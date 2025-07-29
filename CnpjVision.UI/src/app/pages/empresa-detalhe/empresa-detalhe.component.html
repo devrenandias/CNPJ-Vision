@@ -1,0 +1,221 @@
+<div class="detalhes-container">
+
+    <div class="page-header" *ngIf="!carregando && empresa">
+    <div class="header-content">
+      <h2>
+        <i class="fas fa-building"></i>
+        Detalhes da Empresa
+      </h2>
+      <div class="empresa-status" [class]="'status-' + getStatusClass(empresa.situacao)">
+        <i [class]="getStatusIcon(empresa.situacao)"></i>
+        {{ empresa.situacao }}
+      </div>
+    </div>
+    <button class="btn-voltar" (click)="voltar()">
+      <i class="fas fa-arrow-left"></i>
+      Voltar
+    </button>
+  </div>
+
+  
+  <div class="content-wrapper" *ngIf="!carregando && empresa; else carregandoTemplate">
+    
+    
+    <div class="empresa-card">
+      <div class="card-header">
+        <div class="empresa-avatar">
+          {{ (empresa.nomeFantasia || empresa.nomeEmpresarial)?.charAt(0) }}
+        </div>
+        <div class="empresa-info">
+          <h3>{{ empresa.nomeFantasia || empresa.nomeEmpresarial }}</h3>
+          <p class="cnpj-display">{{ formatarCNPJ(empresa.cnpj) }}</p>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="info-grid">
+      
+      
+      <div class="info-section">
+        <div class="section-header">
+          <h4>
+            <i class="fas fa-info-circle"></i>
+            Dados Gerais
+          </h4>
+        </div>
+        <div class="info-content">
+          <div class="info-item">
+            <label>Nome Empresarial</label>
+            <span>{{ empresa.nomeEmpresarial }}</span>
+          </div>
+          <div class="info-item" *ngIf="empresa.nomeFantasia">
+            <label>Nome Fantasia</label>
+            <span>{{ empresa.nomeFantasia }}</span>
+          </div>
+          <div class="info-item">
+            <label>CNPJ</label>
+            <span class="cnpj-code">{{ formatarCNPJ(empresa.cnpj) }}</span>
+          </div>
+          <div class="info-item">
+            <label>Situação</label>
+            <span class="status-badge" [class]="'status-' + getStatusClass(empresa.situacao)">
+              <i [class]="getStatusIcon(empresa.situacao)"></i>
+              {{ empresa.situacao }}
+            </span>
+          </div>
+          <div class="info-item">
+            <label>Data de Abertura</label>
+            <span>{{ empresa.abertura | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="info-item">
+            <label>Tipo</label>
+            <span>{{ empresa.tipo }}</span>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="info-section">
+        <div class="section-header">
+          <h4>
+            <i class="fas fa-gavel"></i>
+            Informações Jurídicas
+          </h4>
+        </div>
+        <div class="info-content">
+          <div class="info-item">
+            <label>Natureza Jurídica</label>
+            <span>{{ empresa.naturezaJuridica }}</span>
+          </div>
+          <div class="info-item">
+            <label>Atividade Principal</label>
+            <span>{{ empresa.atividadePrincipal }}</span>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="info-section endereco-section">
+        <div class="section-header">
+          <h4>
+            <i class="fas fa-map-marker-alt"></i>
+            Endereço
+          </h4>
+        </div>
+        <div class="info-content">
+          <div class="endereco-completo">
+            <div class="endereco-linha">
+              <strong>{{ empresa.logradouro }}, {{ empresa.numero }}</strong>
+              <span *ngIf="empresa.complemento"> - {{ empresa.complemento }}</span>
+            </div>
+            <div class="endereco-linha">
+              {{ empresa.bairro }}
+            </div>
+            <div class="endereco-linha">
+              {{ empresa.municipio }} - {{ empresa.uf }}
+            </div>
+            <div class="endereco-linha">
+              <span class="cep">CEP: {{ formatarCEP(empresa.cep) }}</span>
+            </div>
+          </div>
+          
+       
+          <button class="btn-mapa" (click)="verNoMapa()">
+            <i class="fas fa-map"></i>
+            Ver no Mapa
+          </button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="actions-section">
+      <div class="actions-card">
+        <h4>
+          <i class="fas fa-cog"></i>
+          Ações
+        </h4>
+        <div class="action-buttons">
+          <button class="btn-action btn-excluir" (click)="confirmarExclusao()">
+            <i class="fas fa-trash"></i>
+            Excluir Empresa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <ng-template #carregandoTemplate>
+    <div class="loading-container">
+      <div class="loading-content">
+        <div class="loading-spinner">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+        <h3>Carregando dados da empresa...</h3>
+        <p>Aguarde enquanto buscamos as informações</p>
+      </div>
+    </div>
+  </ng-template>
+
+ 
+  <div *ngIf="erro" class="error-container">
+    <div class="error-content">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3>Erro ao carregar dados</h3>
+      <p>{{ erro }}</p>
+      <button class="btn-retry" (click)="recarregar()">
+        <i class="fas fa-redo"></i>
+        Tentar Novamente
+      </button>
+    </div>
+  </div>
+
+ 
+  <div class="modal-overlay" *ngIf="mostrarModalExclusao" (click)="cancelarExclusao()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h4>Confirmar Exclusão</h4>
+        <button class="modal-close" (click)="cancelarExclusao()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="warning-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <p>Tem certeza que deseja excluir a empresa:</p>
+        <strong>{{ empresa?.nomeFantasia || empresa?.nomeEmpresarial }}?</strong>
+        <p class="warning-text">Esta ação não pode ser desfeita.</p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancelar" (click)="cancelarExclusao()">
+          Cancelar
+        </button>
+        <button class="btn-confirmar" (click)="excluirEmpresa()">
+          <i class="fas fa-trash"></i>
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="toast-container" [class.show]="mostrarToast">
+    <div class="toast" [class]="'toast-' + tipoToast">
+      <div class="toast-icon">
+        <i class="fas" [class.fa-check-circle]="tipoToast === 'success'" [class.fa-exclamation-triangle]="tipoToast === 'error'"></i>
+      </div>
+      <div class="toast-content">
+        <div class="toast-title">{{ tipoToast === 'success' ? 'Sucesso!' : 'Erro!' }}</div>
+        <div class="toast-message">{{ mensagemToast }}</div>
+      </div>
+      <button class="toast-close" (click)="fecharToast()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</div>

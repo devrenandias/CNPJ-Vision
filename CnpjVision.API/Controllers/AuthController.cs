@@ -20,9 +20,9 @@ public class AuthController : ControllerBase
         var result = await _authService.RegisterUserAsync(user, request.Senha);
 
         if (!result)
-            return BadRequest("Usuário já existe");
+            return BadRequest(new { mensagem = "Usuário já existe" });
 
-        return Ok("Usuário criado com sucesso");
+        return Ok(new { mensagem = "Usuário criado com sucesso" });
     }
 
     [HttpPost("login")]

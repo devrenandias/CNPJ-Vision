@@ -1,0 +1,361 @@
+<div class="empresa-container">
+  
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-title">
+        <div class="title-icon">
+          <i class="fas fa-building"></i>
+        </div>
+        <div class="title-text">
+          <h1>Gerenciamento de Empresas</h1>
+          <p class="subtitle">Cadastre e gerencie empresas no sistema</p>
+        </div>
+      </div>
+      <button class="btn-voltar" (click)="router.navigate(['/home'])">
+        <i class="fas fa-arrow-left"></i>
+        <span>Voltar</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="cadastro-section">
+    <div class="cadastro-card">
+      <div class="card-header">
+        <div class="header-icon">
+          <i class="fas fa-plus-circle"></i>
+        </div>
+        <div class="header-info">
+          <h2>Cadastrar Nova Empresa</h2>
+          <p>Informe o CNPJ para buscar e cadastrar automaticamente</p>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="input-container">
+          <div class="input-group">
+            <label for="cnpj">CNPJ da Empresa</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <i class="fas fa-id-card"></i>
+              </div>
+              <input
+                id="cnpj"
+                type="text"
+                [(ngModel)]="cnpj"
+                placeholder="00.000.000/0000-00"
+                maxlength="18"
+                class="form-input"
+                [class.error]="erro"
+                [disabled]="carregando"
+              />
+              <div class="input-actions" *ngIf="cnpjLimpo">
+                <button 
+                  class="btn-limpar" 
+                  (click)="cnpj = ''"
+                  type="button"
+                  title="Limpar campo"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <small class="input-help">
+              <i class="fas fa-info-circle"></i>
+              Digite apenas os números do CNPJ
+            </small>
+          </div>
+
+          <button 
+            class="btn-cadastrar"
+            (click)="cadastrarEmpresa()"
+            [disabled]="carregando || !cnpjLimpo"
+            [class.loading]="carregando"
+          >
+            <div class="btn-content">
+              <div class="btn-icon" *ngIf="!carregando">
+                <i class="fas fa-save"></i>
+              </div>
+              <div class="btn-spinner" *ngIf="carregando">
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+              <span>{{ carregando ? 'Cadastrando...' : 'Cadastrar Empresa' }}</span>
+            </div>
+          </button>
+        </div>
+
+        
+        <div class="alerts-container">
+          <div *ngIf="erro" class="alert alert-error">
+            <div class="alert-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="alert-content">
+              <strong>Erro!</strong>
+              <span>{{ erro }}</span>
+            </div>
+            <button class="alert-close" (click)="erro = ''">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div *ngIf="sucesso" class="alert alert-success">
+            <div class="alert-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="alert-content">
+              <strong>Sucesso!</strong>
+              <span>{{ sucesso }}</span>
+            </div>
+            <button class="alert-close" (click)="sucesso = ''">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="listagem-section">
+    <div class="listagem-card">
+     
+      <div class="listagem-header">
+        <div class="header-info">
+          <h2>
+            <i class="fas fa-list"></i>
+            Empresas Cadastradas
+            <span class="count-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
+          </h2>
+        </div>
+
+        <div class="header-controls">
+          <div class="items-per-page">
+            <label for="itensPorPagina">Exibir:</label>
+            <select 
+              id="itensPorPagina"
+              [(ngModel)]="itensPorPagina"
+              (change)="alterarItensPorPagina(itensPorPagina)"
+              class="items-select"
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+          </div>
+
+          <div class="search-container">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input 
+                type="text"
+                placeholder="Buscar por nome ou CNPJ..."
+                [(ngModel)]="filtro"
+                (input)="onFiltroChange()"
+                class="search-input"
+              />
+              <button 
+                *ngIf="filtro" 
+                class="search-clear"
+                (click)="filtro = ''; onFiltroChange()"
+                title="Limpar busca"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="listagem-content">
+        
+        <div *ngIf="totalItens === 0" class="empty-state">
+          <div class="empty-illustration">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="empty-content">
+            <h3>{{ filtro ? 'Nenhuma empresa encontrada' : 'Nenhuma empresa cadastrada' }}</h3>
+            <p>{{ filtro ? 'Tente ajustar os filtros de busca ou cadastre uma nova empresa.' : 'Comece cadastrando sua primeira empresa usando o formulário acima.' }}</p>
+            <button 
+              *ngIf="filtro" 
+              class="btn-clear-filter"
+              (click)="filtro = ''; onFiltroChange()"
+            >
+              <i class="fas fa-filter"></i>
+              Limpar Filtros
+            </button>
+          </div>
+        </div>
+
+       
+        <div *ngIf="totalItens > 0" class="empresas-grid">
+          <div 
+            *ngFor="let emp of empresasPaginadas; trackBy: trackByEmpresa" 
+            class="empresa-card"
+          >
+            <div class="empresa-header">
+              <div class="empresa-avatar">
+                {{ (emp.nomeFantasia || emp.nomeEmpresarial)?.charAt(0) }}
+              </div>
+              <div class="empresa-info">
+                <h3>{{ emp.nomeFantasia || emp.nomeEmpresarial }}</h3>
+                <p *ngIf="emp.nomeFantasia && emp.nomeEmpresarial && emp.nomeFantasia !== emp.nomeEmpresarial">
+                  {{ emp.nomeEmpresarial }}
+                </p>
+              </div>
+              <div class="empresa-actions">
+                <button
+                  class="action-btn btn-detalhes"
+                  (click)="detalhes(emp.id)"
+                  title="Ver detalhes"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button
+                  class="action-btn btn-excluir"
+                  (click)="confirmarExclusao(emp)"
+                  title="Excluir empresa"
+                >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="empresa-details">
+              <div class="detail-item">
+                <div class="detail-label">
+                  <i class="fas fa-id-card"></i>
+                  CNPJ
+                </div>
+                <div class="detail-value">
+                  <code>{{ formatarCNPJ(emp.cnpj) }}</code>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <div class="detail-label">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Endereço
+                </div>
+                <div class="detail-value">
+                  <span class="endereco-principal">{{ emp.logradouro }}, {{ emp.numero }}</span>
+                  <small class="endereco-cidade">{{ emp.municipio }}/{{ emp.uf }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="pagination-section" *ngIf="totalPaginas > 1">
+          <div class="pagination-info">
+            <span>{{ informacoesPaginacao }}</span>
+          </div>
+
+          <div class="pagination-controls">
+            <button
+              class="pagination-btn"
+              [disabled]="paginaAtual === 1"
+              (click)="irParaPagina(1)"
+              title="Primeira página"
+            >
+              <i class="fas fa-angle-double-left"></i>
+            </button>
+
+            <button
+              class="pagination-btn"
+              [disabled]="paginaAtual === 1"
+              (click)="paginaAnterior()"
+              title="Página anterior"
+            >
+              <i class="fas fa-angle-left"></i>
+            </button>
+
+            <button
+              *ngFor="let pagina of paginasVisiveis"
+              class="pagination-btn pagination-number"
+              [class.active]="pagina === paginaAtual"
+              (click)="irParaPagina(pagina)"
+            >
+              {{ pagina }}
+            </button>
+
+            <button
+              class="pagination-btn"
+              [disabled]="paginaAtual === totalPaginas"
+              (click)="proximaPagina()"
+              title="Próxima página"
+            >
+              <i class="fas fa-angle-right"></i>
+            </button>
+
+            <button
+              class="pagination-btn"
+              [disabled]="paginaAtual === totalPaginas"
+              (click)="irParaPagina(totalPaginas)"
+              title="Última página"
+            >
+              <i class="fas fa-angle-double-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="modal-overlay" *ngIf="empresaParaExcluir" (click)="cancelarExclusao()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Confirmar Exclusão</h3>
+        </div>
+        <button class="modal-close" (click)="cancelarExclusao()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p>Tem certeza que deseja excluir a empresa:</p>
+        <div class="empresa-destaque">
+          <strong>{{ empresaParaExcluir.nomeFantasia || empresaParaExcluir.nomeEmpresarial }}</strong>
+          <small>CNPJ: {{ formatarCNPJ(empresaParaExcluir.cnpj) }}</small>
+        </div>
+        <p class="warning-text">
+          <i class="fas fa-info-circle"></i>
+          Esta ação não pode ser desfeita.
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancelar" (click)="cancelarExclusao()">
+          <i class="fas fa-times"></i>
+          Cancelar
+        </button>
+        <button class="btn-confirmar" (click)="confirmarExclusaoFinal()">
+          <i class="fas fa-trash"></i>
+          Excluir Empresa
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="toast-container" [class.show]="mostrarToast">
+    <div class="toast toast-success">
+      <div class="toast-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="toast-content">
+        <div class="toast-title">Sucesso!</div>
+        <div class="toast-message">{{ mensagemToast }}</div>
+      </div>
+      <button class="toast-close" (click)="fecharToast()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</div>

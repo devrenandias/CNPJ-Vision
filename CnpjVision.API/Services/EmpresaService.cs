@@ -17,11 +17,15 @@ public class EmpresaService
         _context = context;
         _httpClientFactory = httpClientFactory;
     }
-
+    private string LimparCnpj(string cnpj)
+    {
+        return new string(cnpj.Where(char.IsDigit).ToArray());
+    }
     public async Task<Empresa> ConsultarECadastrarEmpresaAsync(string cnpj, int usuarioId)
     {
+        var cnpjLimpo = LimparCnpj(cnpj); 
         var client = _httpClientFactory.CreateClient();
-        var url = $"https://www.receitaws.com.br/v1/cnpj/{cnpj}";
+        var url = $"https://www.receitaws.com.br/v1/cnpj/{cnpjLimpo}"; 
 
         var response = await client.GetAsync(url);
         if (!response.IsSuccessStatusCode)
@@ -39,7 +43,6 @@ public class EmpresaService
         if (receitaResponse == null)
             throw new Exception("Resposta inválida da ReceitaWS.");
 
-        // Converter a data de abertura para DateTime com Kind UTC
         if (!DateTime.TryParseExact(
             receitaResponse.abertura,
             "dd/MM/yyyy",
@@ -50,15 +53,13 @@ public class EmpresaService
             throw new Exception("Data de abertura inválida.");
         }
 
-        // Mapear ReceitaWsResponse para Empresa
         var empresa = new Empresa
         {
             NomeEmpresarial = receitaResponse.nome,
             NomeFantasia = receitaResponse.fantasia,
-            CNPJ = receitaResponse.cnpj,
+            CNPJ = cnpjLimpo, 
             Situacao = receitaResponse.situacao,
-            //TODO
-            Abertura = abertura.ToString("dd/MM/yyyy"),
+            Abertura = abertura,
             Tipo = receitaResponse.tipo,
             NaturezaJuridica = receitaResponse.natureza_juridica,
             AtividadePrincipal = receitaResponse.atividade_principal != null && receitaResponse.atividade_principal.Count > 0 ?
@@ -84,4 +85,24 @@ public class EmpresaService
             .Where(e => e.UsuarioId == usuarioId)
             .ToListAsync();
     }
+
+    public async Task<Empresa?> ObterEmpresaPorIdAsync(int id, int usuarioId)
+    {
+        return await _context.Empresas
+            .FirstOrDefaultAsync(e => e.Id == id && e.UsuarioId == usuarioId);
+    }
+
+    public async Task<bool> ExcluirEmpresaAsync(int id, int usuarioId)
+    {
+        var empresa = await _context.Empresas
+            .FirstOrDefaultAsync(e => e.Id == id && e.UsuarioId == usuarioId);
+
+        if (empresa == null)
+            return false;
+
+        _context.Empresas.Remove(empresa);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
 }

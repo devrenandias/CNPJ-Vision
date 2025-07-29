@@ -1,0 +1,73 @@
+<div class="register-container">
+  <div class="register-box">
+    <div class="logo">
+      <i class="fas fa-building"></i>
+      CNPJ Vision
+    </div>
+    
+    <h1>Cadastre-se</h1>
+    <p class="subtitle">Crie sua conta para começar a usar o sistema</p>
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label for="nome">Nome Completo</label>
+      <input 
+        id="nome" 
+        type="text" 
+        formControlName="nome" 
+        placeholder="Digite seu nome completo" 
+      />
+      <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched" class="error">
+        Nome é obrigatório
+      </div>
+
+      <label for="email">Email</label>
+      <input 
+        id="email" 
+        type="email" 
+        formControlName="email" 
+        placeholder="Digite seu email" 
+      />
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+        Email inválido
+      </div>
+
+      <label for="senha">Senha</label>
+      <input 
+        id="senha" 
+        type="password" 
+        formControlName="senha" 
+        placeholder="Digite sua senha" 
+      />
+      <div *ngIf="form.get('senha')?.invalid && form.get('senha')?.touched" class="error">
+        Senha obrigatória (mínimo 6 caracteres)
+      </div>
+
+      <label for="confirmarSenha">Confirmar Senha</label>
+      <input 
+        id="confirmarSenha" 
+        type="password" 
+        formControlName="confirmarSenha" 
+        placeholder="Confirme sua senha" 
+      />
+      <div *ngIf="form.get('confirmarSenha')?.invalid && form.get('confirmarSenha')?.touched" class="error">
+        As senhas devem ser iguais
+      </div>
+
+      <button type="submit" [disabled]="form.invalid || carregando">
+        <span *ngIf="!carregando">Cadastrar</span>
+        <span *ngIf="carregando">
+          <i class="fas fa-spinner fa-spin"></i> 
+          Cadastrando...
+        </span>
+      </button>
+
+      <div *ngIf="erro" class="error error-message">{{ erro }}</div>
+      <div *ngIf="sucesso" class="success-message">{{ sucesso }}</div>
+    </form>
+
+    <p class="footer">
+      Já tem uma conta? 
+      <a (click)="irParaLogin()" >Faça login</a>
+    </p>
+  </div>
+</div>

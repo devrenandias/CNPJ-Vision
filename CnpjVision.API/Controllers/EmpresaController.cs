@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CnpjVision.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -9,9 +11,11 @@ using System.Threading.Tasks;
 public class EmpresaController : ControllerBase
 {
     private readonly EmpresaService _empresaService;
+    private readonly ApiDbContext _context;
 
-    public EmpresaController(EmpresaService empresaService)
+    public EmpresaController(EmpresaService empresaService, ApiDbContext apiDbContext)
     {
+        _context = apiDbContext;
         _empresaService = empresaService;
     }
 
@@ -32,27 +36,62 @@ public class EmpresaController : ControllerBase
     [HttpPost("{cnpj}")]
     public async Task<IActionResult> CadastrarEmpresa(string cnpj)
     {
-        // Pegar id do usuário logado no token JWT (claim "id")
         var userIdClaim = User.FindFirst("id")?.Value;
-        if (userIdClaim == null)
+        if (userIdClaim == null || !int.TryParse(userIdClaim, out int usuarioId))
             return Unauthorized();
 
         if (string.IsNullOrEmpty(cnpj))
             return BadRequest("CNPJ é obrigatório.");
 
-        if (!int.TryParse(userIdClaim, out int usuarioId))
-            return Unauthorized();
-
         try
         {
-            var empresa = await _empresaService.ConsultarECadastrarEmpresaAsync(cnpj, usuarioId);
+            
+            var cnpjLimpo = new string(cnpj.Where(char.IsDigit).ToArray());
+
+            
+            var jaCadastrada = await _context.Empresas
+                .AnyAsync(e => e.CNPJ == cnpjLimpo && e.UsuarioId == usuarioId);
+
+            if (jaCadastrada)
+                return Conflict(new { mensagem = "Esta empresa já foi cadastrada anteriormente." });
+
+            var empresa = await _empresaService.ConsultarECadastrarEmpresaAsync(cnpjLimpo, usuarioId);
             return Ok(empresa);
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
             return BadRequest(new { mensagem = ex.Message });
         }
-
-        
     }
+
+
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> ObterEmpresaPorId(int id)
+    {
+        var userIdClaim = User.FindFirst("id")?.Value;
+        if (userIdClaim == null || !int.TryParse(userIdClaim, out int usuarioId))
+            return Unauthorized();
+
+        var empresa = await _empresaService.ObterEmpresaPorIdAsync(id, usuarioId);
+        if (empresa == null)
+            return NotFound("Empresa não encontrada");
+
+        return Ok(empresa);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> ExcluirEmpresa(int id)
+    {
+        var userIdClaim = User.FindFirst("id")?.Value;
+        if (userIdClaim == null || !int.TryParse(userIdClaim, out int usuarioId))
+            return Unauthorized();
+
+        var sucesso = await _empresaService.ExcluirEmpresaAsync(id, usuarioId);
+        if (!sucesso)
+            return NotFound("Empresa não encontrada ou não pertence ao usuário");
+
+        return NoContent(); 
+    }
+
 }

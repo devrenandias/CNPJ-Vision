@@ -110,3 +110,4 @@ C:\Users\Public\Github\CNPJ-Vision\CnpjVision.API\bin\Debug\net8.0\System.Identi
 C:\Users\Public\Github\CNPJ-Vision\CnpjVision.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Public\Github\CNPJ-Vision\CnpjVision.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Public\Github\CNPJ-Vision\CnpjVision.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Public\Github\CNPJ-Vision\CnpjVision.API\obj\Debug\net8.0\CnpjVision.API.sourcelink.json

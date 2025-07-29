@@ -1,0 +1,79 @@
+<div class="home-container">
+  <header>
+    <div class="logo">
+      <i class="fas fa-building"></i>
+      CNPJ Vision
+    </div>
+    <nav>
+      <div class="user-info">
+        <i class="fas fa-user-circle"></i>
+        <span>{{ getUserName() }}</span>
+      </div>
+      <button class="btn-logout" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Sair
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="welcome-section">
+      <h1>Bem-vindo ao CNPJ Vision</h1>
+      <p class="description">Sua plataforma completa para gerenciamento de empresas</p>
+    </div>
+
+   
+    <section class="main-section">
+      <div class="main-card" (click)="irParaEmpresas()">
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="card-text">
+            <h2>Gerenciar Empresas</h2>
+            <p>Cadastre, visualize e gerencie todas as suas empresas em um só lugar</p>
+          </div>
+          <div class="card-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+    <section class="quick-actions">
+      <h3>O que você gostaria de fazer?</h3>
+      <div class="actions-grid">
+        <button class="action-btn primary" (click)="irParaEmpresas()">
+          <div class="action-icon">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="action-content">
+            <span class="action-title">Cadastrar Empresa</span>
+            <span class="action-subtitle">Adicione uma nova empresa</span>
+          </div>
+        </button>
+        
+        <button class="action-btn secondary" (click)="irParaEmpresas()">
+          <div class="action-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="action-content">
+            <span class="action-title">Buscar Empresa</span>
+            <span class="action-subtitle">Encontre empresas cadastradas</span>
+          </div>
+        </button>
+        
+        <button class="action-btn tertiary" (click)="irParaEmpresas()">
+          <div class="action-icon">
+            <i class="fas fa-list"></i>
+          </div>
+          <div class="action-content">
+            <span class="action-title">Ver Todas</span>
+            <span class="action-subtitle">Lista completa de empresas</span>
+          </div>
+        </button>
+      </div>
+    </section>
+  </main>
+</div>

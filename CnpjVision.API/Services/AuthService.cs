@@ -20,11 +20,11 @@ public class AuthService
         _configuration = configuration;
     }
 
-    // Cadastrar usuário com hash da senha
+    
     public async Task<bool> RegisterUserAsync(Usuario user, string password)
     {
         if (await _context.Usuarios.AnyAsync(u => u.Email == user.Email))
-            return false; // Já existe usuário com esse email
+            return false; 
 
         user.Senha = HashPassword(password);
         _context.Usuarios.Add(user);
@@ -33,7 +33,7 @@ public class AuthService
         return true;
     }
 
-    // Validar usuário e senha e gerar token JWT
+    
     public async Task<string> AuthenticateAsync(string email, string password)
     {
         var user = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
@@ -43,7 +43,7 @@ public class AuthService
         return GenerateJwtToken(user);
     }
 
-    // Hash da senha usando SHA256 (pode melhorar depois)
+    
     private string HashPassword(string password)
     {
         using var sha256 = SHA256.Create();
@@ -52,7 +52,7 @@ public class AuthService
         return Convert.ToBase64String(hash);
     }
 
-    // Verifica se a senha bate com o hash
+    
     private bool VerifyPassword(string password, string hashedPassword)
     {
         var hashOfInput = HashPassword(password);
