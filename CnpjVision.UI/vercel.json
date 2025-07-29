@@ -5,7 +5,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/cnpj-vision.ui"
+        "distDir": "CnpjVision.UI/dist/cnpj-vision.ui/browser"
       }
     }
   ],
