@@ -20,3 +20,6 @@ project.fragment.lock.json
 # OS junk
 Thumbs.db
 .DS_Store
+
+# Ignore appsettings.json para não subir com senhas
+CnpjVision.API/appsettings.json
