@@ -1,3 +1,3 @@
 export const environment = {
-  urlApi: 'https://localhost:7055/api',
+  urlApi: 'https://api-cnpj-00sh.onrender.com/api',
 };
