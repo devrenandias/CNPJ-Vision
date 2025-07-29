@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\cnpjvision.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:cnpjvision.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\cnpjvision.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:cnpjvision.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\migrations\\apidbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,14 +63,6 @@
       "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|c:\\users\\public\\github\\cnpj-vision\\cnpjvision.api\\models\\requests\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB28AFFC-37FB-4FA0-82CB-CEBC43AC2355}|CnpjVision.API.csproj|solutionrelative:models\\requests\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,20 +82,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAowBoAAAA3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-07-29T00:09:13.16Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CnpjVision.API.http",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\CnpjVision.API.http",
               "RelativeDocumentMoniker": "CnpjVision.API.http",
@@ -108,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ApiDbContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Migrations\\ApiDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Migrations\\ApiDbContextModelSnapshot.cs",
@@ -121,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "20250728010340_Inicial.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Migrations\\20250728010340_Inicial.Designer.cs",
               "RelativeDocumentMoniker": "Migrations\\20250728010340_Inicial.Designer.cs",
@@ -134,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "20250728010340_Inicial.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Migrations\\20250728010340_Inicial.cs",
               "RelativeDocumentMoniker": "Migrations\\20250728010340_Inicial.cs",
@@ -147,12 +147,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "EmpresaController.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Controllers\\EmpresaController.cs",
               "RelativeDocumentMoniker": "Controllers\\EmpresaController.cs",
-              "ToolTip": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Controllers\\EmpresaController.cs*",
-              "RelativeToolTip": "Controllers\\EmpresaController.cs*",
+              "ToolTip": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Controllers\\EmpresaController.cs",
+              "RelativeToolTip": "Controllers\\EmpresaController.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAAmwC8AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-28T01:42:04.222Z",
@@ -173,33 +173,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAADwv0oAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-28T01:21:00.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAiAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAB8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-07-28T01:15:42.028Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -212,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService.cs",
@@ -225,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Models\\Usuario.cs",
@@ -238,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Empresa.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Models\\Empresa.cs",
               "RelativeDocumentMoniker": "Models\\Empresa.cs",
@@ -251,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "EmpresaService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Services\\EmpresaService.cs",
               "RelativeDocumentMoniker": "Services\\EmpresaService.cs",
@@ -264,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "ReceitaWsResponse.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Models\\ReceitaWsResponse.cs",
               "RelativeDocumentMoniker": "Models\\ReceitaWsResponse.cs",
@@ -277,7 +277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\Public\\Github\\CNPJ-Vision\\CnpjVision.API\\Models\\Requests\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Models\\Requests\\LoginRequest.cs",
