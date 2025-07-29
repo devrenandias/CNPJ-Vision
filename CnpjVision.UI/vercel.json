@@ -1,12 +1,7 @@
-
 {
   "version": 2,
   "public": true,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "outputDirectory": "dist/cnpj-vision.ui"
+  ]
 }
