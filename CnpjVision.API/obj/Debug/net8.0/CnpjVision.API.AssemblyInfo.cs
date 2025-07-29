@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CnpjVision.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6922c33e597078bfaea9c6a6715e42c1adf408bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2848f137526948fa184ffd95bbe7a8d84aacbc3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CnpjVision.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CnpjVision.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

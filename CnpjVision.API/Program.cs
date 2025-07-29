@@ -49,7 +49,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("cnpjVisionApp", builder =>
     {
-       builder.WithOrigins("http://localhost:4200")
+       builder.WithOrigins("http://localhost:4200", "https://cnpj-vision.vercel.app")
       .AllowAnyHeader()
       .AllowAnyMethod()
       .AllowCredentials();
