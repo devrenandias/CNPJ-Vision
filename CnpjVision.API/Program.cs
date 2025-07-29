@@ -46,9 +46,9 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowVercel", policy =>
+    options.AddPolicy("cnpjVisionAPP", policy =>
     {
-        policy.WithOrigins("https://cnpj-vision.vercel.app")
+        policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials(); 
@@ -66,7 +66,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting(); 
 
-app.UseCors("AllowVercel"); 
+app.UseCors("cnpjVisionAPP"); 
 
 app.UseHttpsRedirection();
 
@@ -75,6 +75,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/health", () => Results.Ok("OK"));
+
 
 app.Run();
