@@ -2,10 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "CnpjVision.UI/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "CnpjVision.UI/dist/cnpj-vision.ui"
+        "distDir": "CnpjVision.UI/dist/cnpj-vision.ui/browser"
       }
     }
   ],
