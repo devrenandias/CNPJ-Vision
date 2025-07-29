@@ -65,6 +65,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseCors("cnpjVisionApp");
 
 app.UseHttpsRedirection();
