@@ -2,10 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "CnpjVision.UI/angular.json",
+      "src": "angular.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "CnpjVision.UI/dist/cnpj-vision.ui"
+        "distDir": "dist/cnpj-vision.ui"
       }
     }
   ],
